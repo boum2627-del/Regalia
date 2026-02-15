@@ -1,0 +1,1692 @@
+// ============================================================
+// 📁 /src/app/App.tsx
+// ============================================================
+
+import { RouterProvider } from "react-router";
+import { router } from "./routes";
+
+export default function App() {
+  return <RouterProvider router={router} />;
+}
+
+// ============================================================
+// 📁 /src/app/routes.ts
+// ============================================================
+
+import { createBrowserRouter } from "react-router";
+import { Home } from "./pages/Home";
+import { Models } from "./pages/Models";
+import { Rims } from "./pages/Rims";
+import { News } from "./pages/News";
+import { Contact } from "./pages/Contact";
+import { Layout } from "./components/Layout";
+
+export const router = createBrowserRouter([
+  {
+    path: "/",
+    Component: Layout,
+    children: [
+      { index: true, Component: Home },
+      { path: "models", Component: Models },
+      { path: "models/:brand", Component: Models },
+      { path: "rims", Component: Rims },
+      { path: "news", Component: News },
+      { path: "contact", Component: Contact },
+    ],
+  },
+]);
+
+// ============================================================
+// 📁 /src/app/data/carsData.ts
+// ============================================================
+
+export interface Car {
+  id: string;
+  brand: "BMW" | "Ferrari" | "Lamborghini";
+  model: string;
+  description: string;
+  image: string;
+  specs: {
+    power: string;
+    torque: string;
+    acceleration: string;
+  };
+}
+
+export const carsData: Car[] = [
+  // BMW Models
+  {
+    id: "bmw-m4-1",
+    brand: "BMW",
+    model: "M4 Widebody",
+    description: "Performance redefined with carbon widebody kit, gold forged wheels, and diamond leather interior",
+    image: "https://images.unsplash.com/photo-1769673459570-95a6a20a9dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "580 HP",
+      torque: "750 Nm",
+      acceleration: "3.2s 0-100"
+    }
+  },
+  {
+    id: "bmw-m5-1",
+    brand: "BMW",
+    model: "M5 Competition",
+    description: "Ultimate luxury sedan with aggressive styling, performance suspension, and custom illumination",
+    image: "https://images.unsplash.com/photo-1552234816-0ea7b995a55c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "650 HP",
+      torque: "850 Nm",
+      acceleration: "2.9s 0-100"
+    }
+  },
+  {
+    id: "bmw-x6-1",
+    brand: "BMW",
+    model: "X6M Black Edition",
+    description: "Luxury SUV transformed into a beast with carbon fiber accents and gold details",
+    image: "https://images.unsplash.com/photo-1651078977658-d5f963442f5a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "620 HP",
+      torque: "800 Nm",
+      acceleration: "3.5s 0-100"
+    }
+  },
+  
+  // Ferrari Models
+  {
+    id: "ferrari-488-1",
+    brand: "Ferrari",
+    model: "488 Pista Regalia",
+    description: "Italian masterpiece enhanced with widebody carbon kit and custom gold accents",
+    image: "https://images.unsplash.com/photo-1716341930202-af49146d9a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "720 HP",
+      torque: "770 Nm",
+      acceleration: "2.7s 0-100"
+    }
+  },
+  {
+    id: "ferrari-f8-1",
+    brand: "Ferrari",
+    model: "F8 Tributo Custom",
+    description: "Modern Ferrari perfection with carbon fiber body kit and diamond stitched interior",
+    image: "https://images.unsplash.com/photo-1648596811810-56bdc2a4222c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "710 HP",
+      torque: "770 Nm",
+      acceleration: "2.8s 0-100"
+    }
+  },
+  {
+    id: "ferrari-812-1",
+    brand: "Ferrari",
+    model: "812 Superfast Elite",
+    description: "V12 excellence transformed with bespoke aerodynamics and luxury details",
+    image: "https://images.unsplash.com/photo-1606271463681-e350d3038a2c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "800 HP",
+      torque: "718 Nm",
+      acceleration: "2.8s 0-100"
+    }
+  },
+  
+  // Lamborghini Models
+  {
+    id: "lambo-aventador-1",
+    brand: "Lamborghini",
+    model: "Aventador SVJ Regalia",
+    description: "Raging bull elevated with aggressive widebody, gold wheels, and custom exhaust",
+    image: "https://images.unsplash.com/photo-1762095211396-5d0a5e03e648?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "770 HP",
+      torque: "720 Nm",
+      acceleration: "2.6s 0-100"
+    }
+  },
+  {
+    id: "lambo-huracan-1",
+    brand: "Lamborghini",
+    model: "Huracán Performante",
+    description: "Track-focused masterpiece with carbon fiber components and racing heritage",
+    image: "https://images.unsplash.com/photo-1765607754442-950b5e52459a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "650 HP",
+      torque: "600 Nm",
+      acceleration: "2.9s 0-100"
+    }
+  },
+  {
+    id: "lambo-urus-1",
+    brand: "Lamborghini",
+    model: "Urus Widebody",
+    description: "Super SUV transformed with aggressive stance and luxury appointments",
+    image: "https://images.unsplash.com/photo-1679618894243-adbcaecf7e43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    specs: {
+      power: "680 HP",
+      torque: "850 Nm",
+      acceleration: "3.3s 0-100"
+    }
+  },
+];
+
+export const rimImages = [
+  {
+    id: "rim-1",
+    title: "Gold Forged 22\"",
+    image: "https://images.unsplash.com/photo-1679618894243-adbcaecf7e43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Custom gold forged wheels with carbon fiber accents"
+  },
+  {
+    id: "rim-2",
+    title: "Black Performance 21\"",
+    image: "https://images.unsplash.com/photo-1760413452186-962c960667fe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Lightweight forged wheels for maximum performance"
+  },
+  {
+    id: "rim-3",
+    title: "Platinum Diamond 20\"",
+    image: "https://images.unsplash.com/photo-1679618894243-adbcaecf7e43?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Premium platinum finish with diamond cut details"
+  },
+];
+
+export const getBrandModels = (brand: string): Car[] => {
+  return carsData.filter(car => car.brand.toLowerCase() === brand.toLowerCase());
+};
+
+export const getCarById = (id: string): Car | undefined => {
+  return carsData.find(car => car.id === id);
+};
+
+// ============================================================
+// 📁 /src/app/components/Layout.tsx
+// ============================================================
+
+import { Outlet, Link, useNavigate, useLocation } from "react-router";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown } from "lucide-react";
+import { motion, AnimatePresence } from "motion/react";
+import { LoadingAnimation } from "./LoadingAnimation";
+import { ScrollToTop } from "./ScrollToTop";
+
+export function Layout() {
+  const [showLoading, setShowLoading] = useState(true);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [modelsDropdownOpen, setModelsDropdownOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  useEffect(() => {
+    const hasSeenLoading = sessionStorage.getItem("hasSeenLoading");
+    if (hasSeenLoading) {
+      setShowLoading(false);
+    }
+  }, []);
+
+  const handleLoadingComplete = () => {
+    sessionStorage.setItem("hasSeenLoading", "true");
+    setShowLoading(false);
+  };
+
+  const handleBrandClick = (brand: string) => {
+    navigate(`/models/${brand.toLowerCase()}`);
+    setModelsDropdownOpen(false);
+    setMobileMenuOpen(false);
+  };
+
+  if (showLoading) {
+    return <LoadingAnimation onComplete={handleLoadingComplete} />;
+  }
+
+  return (
+    <div className="min-h-screen bg-black text-white">
+      {/* Header */}
+      <header className="fixed top-0 left-0 right-0 z-40 bg-black/90 backdrop-blur-md border-b border-[#D4AF37]/20">
+        <nav className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden text-[#D4AF37] hover:text-[#F4D03F] transition-colors"
+            >
+              {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            </button>
+
+            {/* Logo - Center on Desktop */}
+            <div className="flex-1 lg:flex-none lg:absolute lg:left-1/2 lg:transform lg:-translate-x-1/2">
+              <Link
+                to="/"
+                className="text-3xl tracking-widest font-bold"
+                style={{
+                  background: "linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
+                }}
+              >
+                REGALIA
+              </Link>
+            </div>
+
+            {/* Desktop Navigation */}
+            <div className="hidden lg:flex items-center space-x-12 flex-1 justify-center">
+              <Link
+                to="/"
+                className={`hover:text-[#D4AF37] transition-colors tracking-wider ${
+                  location.pathname === "/" ? "text-[#D4AF37]" : ""
+                }`}
+              >
+                HOME
+              </Link>
+
+              {/* Models Dropdown */}
+              <div
+                className="relative"
+                onMouseEnter={() => setModelsDropdownOpen(true)}
+                onMouseLeave={() => setModelsDropdownOpen(false)}
+              >
+                <button className="flex items-center hover:text-[#D4AF37] transition-colors tracking-wider">
+                  MODELS
+                  <ChevronDown size={16} className="ml-1" />
+                </button>
+                <AnimatePresence>
+                  {modelsDropdownOpen && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -10 }}
+                      transition={{ duration: 0.2 }}
+                      className="absolute top-full left-0 mt-2 w-48 bg-[#1C1C1C] border border-[#D4AF37]/30 shadow-xl"
+                    >
+                      <button
+                        onClick={() => handleBrandClick("BMW")}
+                        className="block w-full text-left px-6 py-3 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors"
+                      >
+                        BMW
+                      </button>
+                      <button
+                        onClick={() => handleBrandClick("Ferrari")}
+                        className="block w-full text-left px-6 py-3 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors"
+                      >
+                        Ferrari
+                      </button>
+                      <button
+                        onClick={() => handleBrandClick("Lamborghini")}
+                        className="block w-full text-left px-6 py-3 hover:bg-[#D4AF37]/10 hover:text-[#D4AF37] transition-colors"
+                      >
+                        Lamborghini
+                      </button>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+              <Link
+                to="/rims"
+                className={`hover:text-[#D4AF37] transition-colors tracking-wider ${
+                  location.pathname === "/rims" ? "text-[#D4AF37]" : ""
+                }`}
+              >
+                RIMS
+              </Link>
+              <Link
+                to="/news"
+                className={`hover:text-[#D4AF37] transition-colors tracking-wider ${
+                  location.pathname === "/news" ? "text-[#D4AF37]" : ""
+                }`}
+              >
+                NEWS
+              </Link>
+              <Link
+                to="/contact"
+                className={`hover:text-[#D4AF37] transition-colors tracking-wider ${
+                  location.pathname === "/contact" ? "text-[#D4AF37]" : ""
+                }`}
+              >
+                CONTACT US
+              </Link>
+            </div>
+          </div>
+
+          {/* Mobile Menu */}
+          <AnimatePresence>
+            {mobileMenuOpen && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: "auto" }}
+                exit={{ opacity: 0, height: 0 }}
+                className="lg:hidden mt-4 pb-4 space-y-4"
+              >
+                <Link
+                  to="/"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block hover:text-[#D4AF37] transition-colors tracking-wider"
+                >
+                  HOME
+                </Link>
+                <div>
+                  <button
+                    onClick={() => setModelsDropdownOpen(!modelsDropdownOpen)}
+                    className="flex items-center hover:text-[#D4AF37] transition-colors tracking-wider w-full"
+                  >
+                    MODELS
+                    <ChevronDown size={16} className="ml-1" />
+                  </button>
+                  <AnimatePresence>
+                    {modelsDropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: "auto" }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="ml-4 mt-2 space-y-2"
+                      >
+                        <button
+                          onClick={() => handleBrandClick("BMW")}
+                          className="block hover:text-[#D4AF37] transition-colors"
+                        >
+                          BMW
+                        </button>
+                        <button
+                          onClick={() => handleBrandClick("Ferrari")}
+                          className="block hover:text-[#D4AF37] transition-colors"
+                        >
+                          Ferrari
+                        </button>
+                        <button
+                          onClick={() => handleBrandClick("Lamborghini")}
+                          className="block hover:text-[#D4AF37] transition-colors"
+                        >
+                          Lamborghini
+                        </button>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </div>
+                <Link
+                  to="/rims"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block hover:text-[#D4AF37] transition-colors tracking-wider"
+                >
+                  RIMS
+                </Link>
+                <Link
+                  to="/news"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block hover:text-[#D4AF37] transition-colors tracking-wider"
+                >
+                  NEWS
+                </Link>
+                <Link
+                  to="/contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block hover:text-[#D4AF37] transition-colors tracking-wider"
+                >
+                  CONTACT US
+                </Link>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </nav>
+      </header>
+
+      {/* Main Content */}
+      <main className="pt-20">
+        <Outlet />
+      </main>
+
+      {/* Scroll to Top Button */}
+      <ScrollToTop />
+
+      {/* Footer */}
+      <footer className="bg-[#1C1C1C] border-t border-[#D4AF37]/20 py-8 mt-20">
+        <div className="container mx-auto px-6 text-center">
+          <p className="text-sm text-gray-400 tracking-wider">
+            © 2026 REGALIA - THE ART OF AUTOMOTIVE TRANSFORMATION
+          </p>
+          <p className="text-xs text-gray-500 mt-2">
+            BMW • Ferrari • Lamborghini Exclusive Transformations
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/components/LoadingAnimation.tsx
+// ============================================================
+
+import { motion } from "motion/react";
+import { useEffect, useState } from "react";
+
+interface LoadingAnimationProps {
+  onComplete: () => void;
+}
+
+export function LoadingAnimation({ onComplete }: LoadingAnimationProps) {
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShow(false);
+      setTimeout(onComplete, 500);
+    }, 3000);
+
+    return () => clearTimeout(timer);
+  }, [onComplete]);
+
+  if (!show) return null;
+
+  return (
+    <motion.div
+      initial={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.5 }}
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black"
+    >
+      <motion.div
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 1, ease: "easeOut" }}
+        className="relative"
+      >
+        <motion.h1
+          className="text-8xl tracking-widest"
+          style={{
+            background: "linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%)",
+            WebkitBackgroundClip: "text",
+            WebkitTextFillColor: "transparent",
+            backgroundClip: "text",
+            textShadow: "0 0 40px rgba(212, 175, 55, 0.5)",
+          }}
+        >
+          REGALIA
+        </motion.h1>
+        
+        <motion.div
+          initial={{ scaleX: 0 }}
+          animate={{ scaleX: 1 }}
+          transition={{ duration: 1.5, delay: 0.5 }}
+          className="h-[2px] bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mt-6"
+        />
+        
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1.2 }}
+          className="text-white text-center mt-8 tracking-[0.3em] text-sm"
+        >
+          THE ART OF AUTOMOTIVE TRANSFORMATION
+        </motion.p>
+      </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: [0, 0.3, 0] }}
+        transition={{ duration: 2, repeat: Infinity }}
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: "radial-gradient(circle at center, rgba(212, 175, 55, 0.1) 0%, transparent 70%)",
+        }}
+      />
+    </motion.div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/components/HeroSlider.tsx
+// ============================================================
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const heroImages = [
+  {
+    id: 1,
+    image: "https://images.unsplash.com/photo-1769673459570-95a6a20a9dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    brand: "BMW",
+    model: "M4 Widebody",
+  },
+  {
+    id: 2,
+    image: "https://images.unsplash.com/photo-1716341930202-af49146d9a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    brand: "Ferrari",
+    model: "488 Pista",
+  },
+  {
+    id: 3,
+    image: "https://images.unsplash.com/photo-1762095211396-5d0a5e03e648?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    brand: "Lamborghini",
+    model: "Aventador SVJ",
+  },
+];
+
+export function HeroSlider() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const goToPrevious = () => {
+    setCurrentIndex((prev) => (prev - 1 + heroImages.length) % heroImages.length);
+  };
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % heroImages.length);
+  };
+
+  return (
+    <div className="relative h-screen w-full overflow-hidden">
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <div
+            className="absolute inset-0 bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${heroImages[currentIndex].image})`,
+            }}
+          >
+            <div className="absolute inset-0 bg-black/40" />
+          </div>
+
+          <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-6">
+            <motion.h1
+              initial={{ y: 30, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.8 }}
+              className="text-7xl md:text-9xl tracking-widest mb-4"
+              style={{
+                background: "linear-gradient(135deg, #D4AF37 0%, #F4D03F 50%, #D4AF37 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+                filter: "drop-shadow(0 0 30px rgba(212, 175, 55, 0.5))",
+              }}
+            >
+              REGALIA
+            </motion.h1>
+
+            <motion.div
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: 1 }}
+              transition={{ delay: 0.6, duration: 1 }}
+              className="h-[2px] w-64 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mb-6"
+            />
+
+            <motion.p
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.9, duration: 0.8 }}
+              className="text-white text-xl md:text-2xl tracking-[0.3em] mb-8"
+            >
+              Le luxe en mouvement
+            </motion.p>
+
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1.2, duration: 0.8 }}
+              className="text-white/80"
+            >
+              <p className="text-lg md:text-xl mb-2">
+                {heroImages[currentIndex].brand}
+              </p>
+              <p className="text-2xl md:text-3xl tracking-wider">
+                {heroImages[currentIndex].model}
+              </p>
+            </motion.div>
+          </div>
+        </motion.div>
+      </AnimatePresence>
+
+      <button
+        onClick={goToPrevious}
+        className="absolute left-6 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all"
+      >
+        <ChevronLeft size={32} className="text-[#D4AF37]" />
+      </button>
+
+      <button
+        onClick={goToNext}
+        className="absolute right-6 top-1/2 -translate-y-1/2 z-10 p-3 bg-black/50 hover:bg-[#D4AF37]/20 border border-[#D4AF37]/30 hover:border-[#D4AF37] transition-all"
+      >
+        <ChevronRight size={32} className="text-[#D4AF37]" />
+      </button>
+
+      <div className="absolute bottom-12 left-1/2 -translate-x-1/2 z-10 flex space-x-3">
+        {heroImages.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all ${
+              index === currentIndex
+                ? "bg-[#D4AF37] w-12"
+                : "bg-white/30 hover:bg-white/50"
+            }`}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/components/SearchSection.tsx
+// ============================================================
+
+import { useState } from "react";
+import { Search } from "lucide-react";
+import { useNavigate } from "react-router";
+import { motion } from "motion/react";
+
+const brandModels = {
+  BMW: ["M4 Widebody", "M5 Competition", "X6M Black Edition"],
+  Ferrari: ["488 Pista Regalia", "F8 Tributo Custom", "812 Superfast Elite"],
+  Lamborghini: ["Aventador SVJ Regalia", "Huracán Performante", "Urus Widebody"],
+};
+
+export function SearchSection() {
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedModel, setSelectedModel] = useState("");
+  const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (selectedBrand) {
+      navigate(`/models/${selectedBrand.toLowerCase()}`);
+    }
+  };
+
+  return (
+    <section className="py-20 px-6 bg-gradient-to-b from-black to-[#1C1C1C]">
+      <div className="container mx-auto max-w-4xl">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-5xl md:text-6xl mb-4 tracking-wider">
+            Find Your Dream Model
+          </h2>
+          <div className="h-[2px] w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
+          <p className="text-gray-400 tracking-wide">
+            Choose options from below and find your customization
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8"
+        >
+          <div className="relative">
+            <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+              BRAND
+            </label>
+            <select
+              value={selectedBrand}
+              onChange={(e) => {
+                setSelectedBrand(e.target.value);
+                setSelectedModel("");
+              }}
+              className="w-full bg-[#1C1C1C] border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+            >
+              <option value="">Select Brand</option>
+              <option value="BMW">BMW</option>
+              <option value="Ferrari">Ferrari</option>
+              <option value="Lamborghini">Lamborghini</option>
+            </select>
+          </div>
+
+          <div className="relative">
+            <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+              MODEL
+            </label>
+            <select
+              value={selectedModel}
+              onChange={(e) => setSelectedModel(e.target.value)}
+              disabled={!selectedBrand}
+              className="w-full bg-[#1C1C1C] border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <option value="">Select Model</option>
+              {selectedBrand &&
+                brandModels[selectedBrand as keyof typeof brandModels].map((model) => (
+                  <option key={model} value={model}>
+                    {model}
+                  </option>
+                ))}
+            </select>
+          </div>
+
+          <div className="flex items-end">
+            <button
+              onClick={handleSearch}
+              disabled={!selectedBrand}
+              className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black px-6 py-3 hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center gap-2 tracking-wider"
+            >
+              <Search size={20} />
+              SEARCH
+            </button>
+          </div>
+        </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center text-gray-500 text-sm"
+        >
+          Discover our exclusive collection of transformed luxury vehicles
+        </motion.p>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/components/ExcellenceSection.tsx
+// ============================================================
+
+import { motion } from "motion/react";
+
+export function ExcellenceSection() {
+  return (
+    <section className="py-20 px-6 bg-gradient-to-b from-[#1C1C1C] to-black">
+      <div className="container mx-auto max-w-7xl">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Text Content */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+          >
+            <h2 className="text-5xl md:text-6xl mb-6 tracking-wider">
+              L'Excellence par Passion
+            </h2>
+            <div className="h-[2px] w-32 bg-gradient-to-r from-[#D4AF37] to-transparent mb-8" />
+            
+            <div className="space-y-6 text-gray-300 leading-relaxed">
+              <p>
+                Regalia est née d'une passion inébranlable pour l'automobile d'exception. 
+                Inspirés par les maîtres de la transformation comme Mansory et Brabus, nous 
+                nous spécialisons exclusivement dans la transformation de BMW, Ferrari et Lamborghini.
+              </p>
+              
+              <p>
+                Notre philosophie repose sur l'excellence totale : widebody kits en carbone, 
+                intérieurs en cuir sur-mesure avec surpiqûres diamant, jantes forgées dorées, 
+                suspensions sport, et éclairages LED personnalisés.
+              </p>
+              
+              <p className="text-[#D4AF37]">
+                Nous ne créons pas simplement des véhicules modifiés. Nous sculptons des 
+                chefs-d'œuvre automobiles qui transcendent les limites du luxe et de la performance.
+              </p>
+            </div>
+
+            <div className="mt-8 grid grid-cols-3 gap-6 text-center">
+              <div>
+                <p className="text-4xl text-[#D4AF37] mb-2">580+</p>
+                <p className="text-sm text-gray-400 tracking-wide">HP AVERAGE</p>
+              </div>
+              <div>
+                <p className="text-4xl text-[#D4AF37] mb-2">100%</p>
+                <p className="text-sm text-gray-400 tracking-wide">CARBON FIBER</p>
+              </div>
+              <div>
+                <p className="text-4xl text-[#D4AF37] mb-2">24K</p>
+                <p className="text-sm text-gray-400 tracking-wide">GOLD ACCENTS</p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Image Grid */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="grid grid-cols-1 gap-4"
+          >
+            <div className="relative h-64 overflow-hidden group">
+              <img
+                src="https://images.unsplash.com/photo-1769673459570-95a6a20a9dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
+                alt="BMW Transformation"
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+              <div className="absolute bottom-4 left-4 text-white">
+                <p className="text-2xl tracking-wider">BMW</p>
+                <p className="text-sm text-[#D4AF37]">M Series Excellence</p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="relative h-48 overflow-hidden group">
+                <img
+                  src="https://images.unsplash.com/photo-1716341930202-af49146d9a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
+                  alt="Ferrari Transformation"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-xl tracking-wider">Ferrari</p>
+                  <p className="text-xs text-[#D4AF37]">Italian Mastery</p>
+                </div>
+              </div>
+
+              <div className="relative h-48 overflow-hidden group">
+                <img
+                  src="https://images.unsplash.com/photo-1762095211396-5d0a5e03e648?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920"
+                  alt="Lamborghini Transformation"
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                <div className="absolute bottom-4 left-4 text-white">
+                  <p className="text-xl tracking-wider">Lamborghini</p>
+                  <p className="text-xs text-[#D4AF37]">Raging Bull</p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/components/ScrollToTop.tsx
+// ============================================================
+
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
+import { ChevronUp } from "lucide-react";
+
+export function ScrollToTop() {
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const toggleVisibility = () => {
+      if (window.scrollY > 500) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", toggleVisibility);
+
+    return () => {
+      window.removeEventListener("scroll", toggleVisibility);
+    };
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
+  return (
+    <AnimatePresence>
+      {isVisible && (
+        <motion.button
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 20 }}
+          onClick={scrollToTop}
+          className="fixed bottom-8 right-8 z-50 p-3 bg-[#D4AF37] text-black hover:bg-[#F4D03F] transition-colors shadow-lg hover:shadow-[0_0_30px_rgba(212,175,55,0.5)]"
+        >
+          <ChevronUp size={24} />
+        </motion.button>
+      )}
+    </AnimatePresence>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/pages/Home.tsx
+// ============================================================
+
+import { HeroSlider } from "../components/HeroSlider";
+import { SearchSection } from "../components/SearchSection";
+import { ExcellenceSection } from "../components/ExcellenceSection";
+
+export function Home() {
+  return (
+    <div>
+      <HeroSlider />
+      <SearchSection />
+      <ExcellenceSection />
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/pages/Models.tsx
+// ============================================================
+
+import { useParams } from "react-router";
+import { motion } from "motion/react";
+import { carsData, getBrandModels } from "../data/carsData";
+import { Gauge, Zap, Timer } from "lucide-react";
+
+export function Models() {
+  const { brand } = useParams();
+  
+  const models = brand 
+    ? getBrandModels(brand.charAt(0).toUpperCase() + brand.slice(1))
+    : carsData;
+
+  const brandName = brand 
+    ? brand.charAt(0).toUpperCase() + brand.slice(1)
+    : "All Models";
+
+  return (
+    <div className="min-h-screen bg-black py-20 px-6">
+      <div className="container mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-6xl md:text-7xl mb-6 tracking-wider">
+            {brandName}
+          </h1>
+          <div className="h-[2px] w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
+          <p className="text-gray-400 tracking-wide text-lg">
+            Exclusive Transformations
+          </p>
+        </motion.div>
+
+        {/* Models Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {models.map((car, index) => (
+            <motion.div
+              key={car.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              className="group relative bg-[#1C1C1C] overflow-hidden"
+            >
+              {/* Image */}
+              <div className="relative h-64 overflow-hidden">
+                <img
+                  src={car.image}
+                  alt={car.model}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+                
+                {/* Brand Badge */}
+                <div className="absolute top-4 right-4 bg-[#D4AF37] text-black px-4 py-1 text-sm tracking-wider">
+                  {car.brand}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-6">
+                <h3 className="text-2xl mb-2 tracking-wide group-hover:text-[#D4AF37] transition-colors">
+                  {car.model}
+                </h3>
+                <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                  {car.description}
+                </p>
+
+                {/* Specs */}
+                <div className="grid grid-cols-3 gap-4 border-t border-[#D4AF37]/20 pt-4">
+                  <div className="text-center">
+                    <Gauge size={20} className="text-[#D4AF37] mx-auto mb-1" />
+                    <p className="text-xs text-gray-500">Power</p>
+                    <p className="text-sm text-white">{car.specs.power}</p>
+                  </div>
+                  <div className="text-center">
+                    <Zap size={20} className="text-[#D4AF37] mx-auto mb-1" />
+                    <p className="text-xs text-gray-500">Torque</p>
+                    <p className="text-sm text-white">{car.specs.torque}</p>
+                  </div>
+                  <div className="text-center">
+                    <Timer size={20} className="text-[#D4AF37] mx-auto mb-1" />
+                    <p className="text-xs text-gray-500">0-100</p>
+                    <p className="text-sm text-white">{car.specs.acceleration}</p>
+                  </div>
+                </div>
+
+                {/* View Project Button */}
+                <button className="w-full mt-6 bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black py-3 tracking-wider hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all">
+                  VIEW PROJECT
+                </button>
+              </div>
+
+              {/* Hover Effect */}
+              <div className="absolute inset-0 border border-[#D4AF37] opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+            </motion.div>
+          ))}
+        </div>
+
+        {models.length === 0 && (
+          <div className="text-center py-20">
+            <p className="text-gray-400 text-xl">No models found</p>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/pages/Rims.tsx
+// ============================================================
+
+import { motion } from "motion/react";
+import { rimImages } from "../data/carsData";
+
+export function Rims() {
+  return (
+    <div className="min-h-screen bg-black py-20 px-6">
+      <div className="container mx-auto">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-6xl md:text-7xl mb-6 tracking-wider">
+            Exclusive Rims
+          </h1>
+          <div className="h-[2px] w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
+          <p className="text-gray-400 tracking-wide text-lg">
+            Gold Forged & Performance Wheels
+          </p>
+        </motion.div>
+
+        {/* Rims Gallery */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          {rimImages.map((rim, index) => (
+            <motion.div
+              key={rim.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              className="group relative overflow-hidden bg-[#1C1C1C]"
+            >
+              <div className="relative h-80 overflow-hidden">
+                <img
+                  src={rim.image}
+                  alt={rim.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60" />
+              </div>
+
+              <div className="p-6">
+                <h3 className="text-2xl mb-2 tracking-wide text-[#D4AF37]">
+                  {rim.title}
+                </h3>
+                <p className="text-gray-400 text-sm">
+                  {rim.description}
+                </p>
+              </div>
+
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none bg-gradient-to-t from-[#D4AF37]/10 to-transparent" />
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Features Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-20"
+        >
+          <div className="text-center p-8 bg-[#1C1C1C] border border-[#D4AF37]/20">
+            <div className="text-5xl text-[#D4AF37] mb-4">24K</div>
+            <h3 className="text-xl mb-2 tracking-wide">Gold Finish</h3>
+            <p className="text-gray-400 text-sm">
+              Premium 24K gold plating for ultimate luxury
+            </p>
+          </div>
+
+          <div className="text-center p-8 bg-[#1C1C1C] border border-[#D4AF37]/20">
+            <div className="text-5xl text-[#D4AF37] mb-4">100%</div>
+            <h3 className="text-xl mb-2 tracking-wide">Forged</h3>
+            <p className="text-gray-400 text-sm">
+              Lightweight forged construction for maximum performance
+            </p>
+          </div>
+
+          <div className="text-center p-8 bg-[#1C1C1C] border border-[#D4AF37]/20">
+            <div className="text-5xl text-[#D4AF37] mb-4">∞</div>
+            <h3 className="text-xl mb-2 tracking-wide">Custom</h3>
+            <p className="text-gray-400 text-sm">
+              Fully customizable designs to match your vision
+            </p>
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="text-center mt-20 p-12 bg-gradient-to-b from-[#1C1C1C] to-black border border-[#D4AF37]/20"
+        >
+          <h2 className="text-4xl mb-6 tracking-wider">
+            Ready to Transform Your Ride?
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Contact us to discuss your custom wheel requirements and bring your vision to life.
+          </p>
+          <button className="bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black px-12 py-4 tracking-wider hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all">
+            CONTACT US
+          </button>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/pages/News.tsx
+// ============================================================
+
+import { motion } from "motion/react";
+import { Calendar } from "lucide-react";
+
+const newsItems = [
+  {
+    id: 1,
+    title: "BMW M4 Widebody - February Edition",
+    date: "February 10, 2026",
+    image: "https://images.unsplash.com/photo-1769673459570-95a6a20a9dae?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Our latest BMW M4 transformation featuring full carbon widebody kit, 24K gold forged wheels, and diamond leather interior. Power upgraded to 580HP.",
+    category: "New Build",
+  },
+  {
+    id: 2,
+    title: "Ferrari 488 Pista - Ultimate Performance",
+    date: "February 8, 2026",
+    image: "https://images.unsplash.com/photo-1716341930202-af49146d9a1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Italian excellence meets Regalia craftsmanship. Custom aerodynamics, enhanced power delivery, and bespoke interior detailing.",
+    category: "Featured",
+  },
+  {
+    id: 3,
+    title: "Lamborghini Aventador SVJ - Gold Edition",
+    date: "February 5, 2026",
+    image: "https://images.unsplash.com/photo-1762095211396-5d0a5e03e648?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1920",
+    description: "Exclusive gold accents throughout the exterior and interior. Custom exhaust system with titanium components and LED signature lighting.",
+    category: "Limited Edition",
+  },
+];
+
+export function News() {
+  return (
+    <div className="min-h-screen bg-black py-20 px-6">
+      <div className="container mx-auto max-w-6xl">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-6xl md:text-7xl mb-6 tracking-wider">
+            News & Events
+          </h1>
+          <div className="h-[2px] w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
+          <p className="text-gray-400 tracking-wide text-lg">
+            Latest Transformations - February 2026
+          </p>
+        </motion.div>
+
+        {/* News Grid */}
+        <div className="space-y-12">
+          {newsItems.map((item, index) => (
+            <motion.article
+              key={item.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: index * 0.2 }}
+              className="group bg-[#1C1C1C] overflow-hidden grid grid-cols-1 lg:grid-cols-2 gap-0 hover:shadow-[0_0_40px_rgba(212,175,55,0.2)] transition-all"
+            >
+              {/* Image */}
+              <div className="relative h-80 lg:h-96 overflow-hidden">
+                <img
+                  src={item.image}
+                  alt={item.title}
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#1C1C1C]/80 lg:to-[#1C1C1C]" />
+                
+                {/* Category Badge */}
+                <div className="absolute top-6 left-6 bg-[#D4AF37] text-black px-4 py-2 text-sm tracking-wider">
+                  {item.category}
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="p-8 lg:p-12 flex flex-col justify-center">
+                <div className="flex items-center gap-2 text-[#D4AF37] mb-4">
+                  <Calendar size={18} />
+                  <span className="text-sm tracking-wide">{item.date}</span>
+                </div>
+
+                <h2 className="text-3xl md:text-4xl mb-4 tracking-wide group-hover:text-[#D4AF37] transition-colors">
+                  {item.title}
+                </h2>
+
+                <p className="text-gray-400 leading-relaxed mb-6">
+                  {item.description}
+                </p>
+
+                <button className="self-start bg-transparent border border-[#D4AF37] text-[#D4AF37] px-8 py-3 tracking-wider hover:bg-[#D4AF37] hover:text-black transition-all">
+                  READ MORE
+                </button>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+
+        {/* Newsletter Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="mt-20 p-12 bg-gradient-to-b from-[#1C1C1C] to-black border border-[#D4AF37]/20 text-center"
+        >
+          <h2 className="text-4xl mb-4 tracking-wider">
+            Stay Updated
+          </h2>
+          <p className="text-gray-400 mb-8 max-w-2xl mx-auto">
+            Subscribe to receive exclusive updates on our latest transformations and automotive excellence.
+          </p>
+          
+          <div className="max-w-md mx-auto flex gap-4">
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className="flex-1 bg-black border border-[#D4AF37]/30 text-white px-6 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+            />
+            <button className="bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black px-8 py-3 tracking-wider hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all">
+              SUBSCRIBE
+            </button>
+          </div>
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/app/pages/Contact.tsx
+// ============================================================
+
+import { motion } from "motion/react";
+import { Mail, Phone, MapPin, Instagram, Facebook, Youtube } from "lucide-react";
+import { useState } from "react";
+
+export function Contact() {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    phone: "",
+    brand: "",
+    message: "",
+  });
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log("Form submitted:", formData);
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  return (
+    <div className="min-h-screen bg-black py-20 px-6">
+      <div className="container mx-auto max-w-6xl">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h1 className="text-6xl md:text-7xl mb-6 tracking-wider">
+            Contact Us
+          </h1>
+          <div className="h-[2px] w-32 bg-gradient-to-r from-transparent via-[#D4AF37] to-transparent mx-auto mb-6" />
+          <p className="text-gray-400 tracking-wide text-lg">
+            Let's Create Your Automotive Masterpiece
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+          {/* Contact Information */}
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-8"
+          >
+            <div>
+              <h2 className="text-3xl mb-6 tracking-wider">Get In Touch</h2>
+              <p className="text-gray-400 leading-relaxed mb-8">
+                Ready to transform your BMW, Ferrari, or Lamborghini into a work of art? 
+                Contact our team of specialists to discuss your vision.
+              </p>
+            </div>
+
+            {/* Contact Details */}
+            <div className="space-y-6">
+              <div className="flex items-start gap-4 group">
+                <div className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 group-hover:border-[#D4AF37] transition-colors">
+                  <Mail className="text-[#D4AF37]" size={24} />
+                </div>
+                <div>
+                  <h3 className="text-lg mb-1">Email</h3>
+                  <p className="text-gray-400">contact@regalia-auto.com</p>
+                  <p className="text-gray-400">vip@regalia-auto.com</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 group-hover:border-[#D4AF37] transition-colors">
+                  <Phone className="text-[#D4AF37]" size={24} />
+                </div>
+                <div>
+                  <h3 className="text-lg mb-1">Phone</h3>
+                  <p className="text-gray-400">+33 1 23 45 67 89</p>
+                  <p className="text-gray-400">+33 6 12 34 56 78 (WhatsApp)</p>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-4 group">
+                <div className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 group-hover:border-[#D4AF37] transition-colors">
+                  <MapPin className="text-[#D4AF37]" size={24} />
+                </div>
+                <div>
+                  <h3 className="text-lg mb-1">Location</h3>
+                  <p className="text-gray-400">
+                    123 Avenue des Champs-Élysées<br />
+                    75008 Paris, France
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Social Media */}
+            <div>
+              <h3 className="text-xl mb-4 tracking-wide">Follow Us</h3>
+              <div className="flex gap-4">
+                <a
+                  href="#"
+                  className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all"
+                >
+                  <Instagram className="text-[#D4AF37]" size={24} />
+                </a>
+                <a
+                  href="#"
+                  className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all"
+                >
+                  <Facebook className="text-[#D4AF37]" size={24} />
+                </a>
+                <a
+                  href="#"
+                  className="p-3 bg-[#1C1C1C] border border-[#D4AF37]/30 hover:border-[#D4AF37] hover:bg-[#D4AF37]/10 transition-all"
+                >
+                  <Youtube className="text-[#D4AF37]" size={24} />
+                </a>
+              </div>
+            </div>
+
+            {/* Hours */}
+            <div className="bg-[#1C1C1C] border border-[#D4AF37]/20 p-6">
+              <h3 className="text-xl mb-4 tracking-wide">Business Hours</h3>
+              <div className="space-y-2 text-gray-400">
+                <div className="flex justify-between">
+                  <span>Monday - Friday</span>
+                  <span className="text-[#D4AF37]">9:00 - 19:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Saturday</span>
+                  <span className="text-[#D4AF37]">10:00 - 18:00</span>
+                </div>
+                <div className="flex justify-between">
+                  <span>Sunday</span>
+                  <span className="text-gray-500">Closed</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Contact Form */}
+          <motion.div
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="bg-[#1C1C1C] border border-[#D4AF37]/20 p-8"
+          >
+            <h2 className="text-3xl mb-6 tracking-wider">Send a Message</h2>
+            
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+                  FULL NAME *
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+                  EMAIL *
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  className="w-full bg-black border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="your.email@example.com"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+                  PHONE
+                </label>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  className="w-full bg-black border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                  placeholder="+33 6 12 34 56 78"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+                  VEHICLE BRAND
+                </label>
+                <select
+                  name="brand"
+                  value={formData.brand}
+                  onChange={handleChange}
+                  className="w-full bg-black border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors"
+                >
+                  <option value="">Select your brand</option>
+                  <option value="BMW">BMW</option>
+                  <option value="Ferrari">Ferrari</option>
+                  <option value="Lamborghini">Lamborghini</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
+
+              <div>
+                <label className="block text-[#D4AF37] text-sm tracking-wider mb-2">
+                  MESSAGE *
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={5}
+                  className="w-full bg-black border border-[#D4AF37]/30 text-white px-4 py-3 focus:outline-none focus:border-[#D4AF37] transition-colors resize-none"
+                  placeholder="Tell us about your project..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-gradient-to-r from-[#D4AF37] to-[#F4D03F] text-black py-4 tracking-wider hover:shadow-[0_0_30px_rgba(212,175,55,0.5)] transition-all"
+              >
+                SEND MESSAGE
+              </button>
+            </form>
+          </motion.div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================
+// 📁 /src/styles/regalia.css
+// ============================================================
+
+/* REGALIA Custom Styles */
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #F4D03F;
+}
+
+/* Prevent text selection on certain elements */
+button, a {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Gold glow animation */
+@keyframes goldGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(212, 175, 55, 0.3),
+                 0 0 20px rgba(212, 175, 55, 0.2),
+                 0 0 30px rgba(212, 175, 55, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(212, 175, 55, 0.5),
+                 0 0 30px rgba(212, 175, 55, 0.3),
+                 0 0 40px rgba(212, 175, 55, 0.2);
+  }
+}
+
+/* Subtle pulse animation for gold elements */
+@keyframes goldPulse {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Image hover effect */
+.image-hover-effect {
+  transition: transform 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.image-hover-effect:hover {
+  transform: scale(1.1);
+}
+
+// ============================================================
+// 📁 /package.json
+// ============================================================
+
+{
+  "name": "@figma/my-make-file",
+  "private": true,
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "vite build"
+  },
+  "dependencies": {
+    "lucide-react": "0.487.0",
+    "motion": "12.23.24",
+    "react-router": "7.13.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "4.1.12",
+    "@vitejs/plugin-react": "4.7.0",
+    "tailwindcss": "4.1.12",
+    "vite": "6.3.5"
+  },
+  "peerDependencies": {
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  }
+}
