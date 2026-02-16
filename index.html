@@ -7,13 +7,13 @@
 
 <style>
 
-/* ================= GLOBAL ================= */
+/* ===== GLOBAL ===== */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 scroll-behavior:smooth;
-font-family: 'Segoe UI', sans-serif;
+font-family:Arial, Helvetica, sans-serif;
 }
 
 body{
@@ -22,7 +22,7 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* ================= INTRO CINEMATIC ================= */
+/* ===== INTRO ===== */
 .intro{
 position:fixed;
 width:100%;
@@ -32,190 +32,216 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-animation:fadeOut 4s forwards 3s;
+animation:fadeOut 3s forwards 2s;
 }
 
 .intro h1{
 color:#D4AF37;
-font-size:80px;
-letter-spacing:12px;
+font-size:70px;
+letter-spacing:8px;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{ text-shadow:0 0 20px #D4AF37;}
-to{ text-shadow:0 0 50px #D4AF37;}
+from{ text-shadow:0 0 10px #D4AF37;}
+to{ text-shadow:0 0 30px #D4AF37;}
 }
 
 @keyframes fadeOut{
 to{opacity:0;visibility:hidden;}
 }
 
-/* ================= NAVBAR ================= */
+/* ===== NAVBAR ===== */
 header{
 position:fixed;
-top:0;
 width:100%;
+top:0;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:25px 80px;
+padding:20px 60px;
 background:rgba(0,0,0,0.9);
-backdrop-filter:blur(10px);
 z-index:1000;
 }
 
 .logo{
 color:#D4AF37;
-font-size:30px;
+font-size:28px;
 font-weight:bold;
-letter-spacing:4px;
 }
 
 nav ul{
 display:flex;
-gap:40px;
+gap:30px;
 list-style:none;
 }
 
 nav a{
 text-decoration:none;
 color:#fff;
-font-size:15px;
-transition:0.4s;
+transition:0.3s;
 }
 
 nav a:hover{
 color:#D4AF37;
 }
 
-/* ================= HERO SLIDER ================= */
+/* ===== HERO ===== */
 .hero{
 height:100vh;
-position:relative;
-overflow:hidden;
-}
-
-.slide{
-position:absolute;
-width:100%;
-height:100%;
-background-size:cover;
-background-position:center;
-opacity:0;
-transition:1.5s ease-in-out;
-}
-
-.slide.active{
-opacity:1;
-}
-
-.overlay{
-position:absolute;
-width:100%;
-height:100%;
-background:rgba(0,0,0,0.6);
+background:url('https://images.unsplash.com/photo-1511910849309-0dffb8a64c1b') center/cover no-repeat;
 display:flex;
-justify-content:center;
 align-items:center;
-flex-direction:column;
+justify-content:center;
 text-align:center;
 }
 
-.overlay h1{
-font-size:70px;
+.hero h1{
+font-size:60px;
 color:#D4AF37;
-letter-spacing:6px;
 }
 
-.overlay p{
+.hero p{
+margin-top:15px;
+font-size:20px;
+}
+
+/* ===== SEARCH ===== */
+.search-section{
+padding:120px 20px;
+text-align:center;
+background:#111;
+}
+
+.search-section h2{
+color:#D4AF37;
+margin-bottom:30px;
+}
+
+select,button{
+padding:12px;
+margin:10px;
+background:#000;
+color:#D4AF37;
+border:1px solid #D4AF37;
+}
+
+button{
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#D4AF37;
+color:#000;
+}
+
+#result{
 margin-top:20px;
 font-size:20px;
 }
 
-/* ================= PARALLAX SECTION ================= */
-.parallax{
-height:60vh;
-background:url('https://images.unsplash.com/photo-1549924231-f129b911e442') center/cover fixed;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-}
-
-.parallax h2{
-font-size:50px;
-color:#D4AF37;
-}
-
-/* ================= MODELS ================= */
+/* ===== MODELS ===== */
 .models{
-padding:120px 60px;
+padding:100px 40px;
 text-align:center;
 }
 
 .models h2{
 color:#D4AF37;
-margin-bottom:60px;
-font-size:40px;
+margin-bottom:40px;
 }
 
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:40px;
+gap:30px;
 }
 
 .card{
 background:#111;
-width:320px;
 border:1px solid #D4AF37;
-overflow:hidden;
-transition:0.5s;
+width:300px;
+transition:0.4s;
 }
 
 .card img{
 width:100%;
-height:220px;
+height:200px;
 object-fit:cover;
 }
 
 .card h3{
-padding:20px;
+padding:15px;
 }
 
 .card:hover{
-transform:translateY(-15px);
-box-shadow:0 0 40px #D4AF37;
+transform:translateY(-10px);
+box-shadow:0 0 20px #D4AF37;
 }
 
-/* ================= FOOTER ================= */
-footer{
-padding:50px;
+/* ===== RIMS ===== */
+.rims{
+padding:100px 40px;
+background:#111;
 text-align:center;
-border-top:1px solid #D4AF37;
+}
+
+.rims h2{
+color:#D4AF37;
+margin-bottom:40px;
+}
+
+/* ===== NEWS ===== */
+.news{
+padding:100px 40px;
+text-align:center;
+}
+
+.news h2{
+color:#D4AF37;
+margin-bottom:20px;
+}
+
+/* ===== CONTACT ===== */
+.contact{
+padding:100px 40px;
+background:#111;
+text-align:center;
+}
+
+.contact h2{
+color:#D4AF37;
+margin-bottom:20px;
+}
+
+/* ===== FOOTER ===== */
+footer{
+padding:40px;
+text-align:center;
 background:#000;
+border-top:1px solid #D4AF37;
 }
 
-/* ================= RESPONSIVE ================= */
+/* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-
-header{
-padding:20px;
-}
 
 nav ul{
 display:none;
 }
 
-.overlay h1{
-font-size:40px;
+header{
+padding:20px;
 }
 
 .cards{
 flex-direction:column;
 align-items:center;
+}
+
+.hero h1{
+font-size:35px;
 }
 
 }
@@ -237,34 +263,44 @@ align-items:center;
 <ul>
 <li><a href="#">Home</a></li>
 <li><a href="#models">Models</a></li>
+<li><a href="#rims">Rims</a></li>
+<li><a href="#news">News</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 </header>
 
-<!-- HERO SLIDER -->
+<!-- HERO -->
 <section class="hero">
-
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1511910849309-0dffb8a64c1b');"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1549924231-f129b911e442');"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');"></div>
-
-<div class="overlay">
-<h1>LE LUXE EN MOUVEMENT</h1>
+<div>
+<h1>Le Luxe en Mouvement</h1>
 <p>The Art of Automotive Transformation</p>
 </div>
-
 </section>
 
-<!-- PARALLAX -->
-<section class="parallax">
-<h2>Extreme Custom Builds</h2>
+<!-- SEARCH -->
+<section class="search-section">
+<h2>Find Your Dream Model</h2>
+
+<select id="brand">
+<option value="">Select Brand</option>
+<option value="BMW">BMW</option>
+<option value="Ferrari">Ferrari</option>
+<option value="Lamborghini">Lamborghini</option>
+</select>
+
+<select id="model">
+<option value="">Select Model</option>
+</select>
+
+<button onclick="searchCar()">Search</button>
+
+<div id="result"></div>
 </section>
 
 <!-- MODELS -->
 <section id="models" class="models">
-<h2>Our Masterpieces</h2>
-
+<h2>Our Transformations</h2>
 <div class="cards">
 
 <div class="card">
@@ -285,24 +321,66 @@ align-items:center;
 </div>
 </section>
 
-<footer id="contact">
-<p>Contact: contact@regalia.com | +212 6 00 00 00 00</p>
-<p>© 2026 REGALIA – The Art of Automotive Transformation</p>
+<!-- RIMS -->
+<section id="rims" class="rims">
+<h2>Exclusive Rims Collection</h2>
+<p>Gold forged rims – Carbon edition – Performance luxury wheels</p>
+</section>
+
+<!-- NEWS -->
+<section id="news" class="news">
+<h2>News & Events</h2>
+<p>Discover our latest transformations this month.</p>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+<h2>Contact Us</h2>
+<p>Email: contact@regalia.com</p>
+<p>Phone: +212 6 00 00 00 00</p>
+</section>
+
+<footer>
+© 2026 REGALIA – The Art of Automotive Transformation
 </footer>
 
 <script>
 
-/* ===== SLIDER AUTOMATIQUE ===== */
-let slides=document.querySelectorAll(".slide");
-let index=0;
+const models = {
+BMW:["M4 Widebody","M5 Carbon Edition"],
+Ferrari:["488 Regalia","F8 Widebody"],
+Lamborghini:["Huracan EVO","Aventador SVR"]
+};
 
-function changeSlide(){
-slides[index].classList.remove("active");
-index=(index+1)%slides.length;
-slides[index].classList.add("active");
+const brandSelect=document.getElementById("brand");
+const modelSelect=document.getElementById("model");
+
+brandSelect.addEventListener("change",function(){
+const selectedBrand=this.value;
+modelSelect.innerHTML="<option>Select Model</option>";
+
+if(models[selectedBrand]){
+models[selectedBrand].forEach(function(model){
+const option=document.createElement("option");
+option.value=model;
+option.textContent=model;
+modelSelect.appendChild(option);
+});
 }
+});
 
-setInterval(changeSlide,5000);
+function searchCar(){
+const brand=brandSelect.value;
+const model=modelSelect.value;
+
+if(brand && model){
+document.getElementById("result").innerHTML=
+`<h3>${brand} - ${model} | Regalia Custom Build</h3>`;
+}else{
+document.getElementById("result").innerHTML=
+"<p>Please select brand and model</p>";
+}
+}
 
 </script>
 
