@@ -5,184 +5,110 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>REGALIA | Ultra Luxury Automotive</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Montserrat:wght@200;300;400;500;600&display=swap" rel="stylesheet">
 <script src="https://unpkg.com/lucide@latest"></script>
 <style>
-body{background:#050505;color:white;font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+body {background:#050505;color:white;font-family:'Montserrat',sans-serif;overflow-x:hidden;}
 h1,h2,h3,h4,.font-serif{font-family:'Cinzel',serif;}
-::-webkit-scrollbar{width:6px;}
-::-webkit-scrollbar-track{background:#050505;}
-::-webkit-scrollbar-thumb{background:#333;border-radius:3px;}
-::-webkit-scrollbar-thumb:hover{background:#d4af37;}
-::selection{background:#d4af37;color:black;}
-.fade-in{opacity:0;transform:translateY(20px);transition:all 1s ease-out;}
-.fade-in.visible{opacity:1;transform:translateY(0);}
-.page{display:none;}
-.page.active{display:block;}
-.nav-active{color:#d4af37;}
+a {text-decoration:none;}
+.btn-gold {border:1px solid #d4af37;color:#d4af37;padding:0.8rem 1.5rem;text-transform:uppercase;transition:0.3s;}
+.btn-gold:hover {background:#d4af37;color:#050505;}
 </style>
-<script>
-tailwind.config={theme:{extend:{colors:{gold:'#d4af37',black:'#050505',dark:'#0a0a0a'},fontFamily:{serif:['Cinzel','serif'],sans:['Montserrat','sans-serif']}}}};
-</script>
 </head>
 <body>
 
 <!-- NAVBAR -->
-<nav class="fixed top-0 left-0 right-0 z-50 py-6 bg-black/90 backdrop-blur-md">
-<div class="container mx-auto px-6 flex justify-between items-center">
-<a href="#" class="text-2xl font-serif font-bold tracking-[0.2em] text-white" onclick="showPage('home')">REGALIA</a>
-<div class="flex items-center space-x-6 font-sans">
-<button onclick="showPage('home')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Home</button>
-<button onclick="showPage('bmw')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">BMW</button>
-<button onclick="showPage('ferrari')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Ferrari</button>
-<button onclick="showPage('lamborghini')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Lamborghini</button>
-<button onclick="showPage('rims')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">Rims</button>
-<button onclick="showPage('news')" class="page-btn text-sm uppercase tracking-widest text-gray-300 hover:text-gold transition-colors">News</button>
-<button onclick="showPage('contact')" class="px-4 py-2 border border-gold text-gold text-xs uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300">Contact</button>
-</div>
-</div>
+<nav class="fixed top-0 left-0 right-0 bg-transparent z-50 p-6 flex justify-between items-center">
+  <a href="index.html" class="text-2xl font-serif font-bold text-white">REGALIA</a>
+  <div class="hidden md:flex space-x-6">
+    <a href="index.html" class="hover:text-gold transition">Home</a>
+    <div class="relative group">
+      <button class="hover:text-gold transition flex items-center">Models <i data-lucide="chevron-down" class="ml-1 w-4 h-4"></i></button>
+      <div class="absolute hidden group-hover:block top-full left-0 mt-2 bg-black border border-gold/50 w-48 text-center">
+        <a href="bmw.html" class="block py-2 hover:bg-gold hover:text-black">BMW</a>
+        <a href="ferrari.html" class="block py-2 hover:bg-gold hover:text-black">Ferrari</a>
+        <a href="lamborghini.html" class="block py-2 hover:bg-gold hover:text-black">Lamborghini</a>
+      </div>
+    </div>
+    <a href="rims.html" class="hover:text-gold transition">Rims</a>
+    <a href="news.html" class="hover:text-gold transition">News</a>
+    <a href="contact.html" class="btn-gold">Contact Us</a>
+  </div>
 </nav>
 
-<!-- HOME PAGE -->
-<div id="home" class="page active mt-24">
-<section class="relative h-screen w-full overflow-hidden">
-<div id="hero-slider" class="absolute inset-0">
-<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image:url('https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
-<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
-<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
-</div>
-<div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
-<div class="absolute bottom-32 left-0 right-0 z-10 px-6 container mx-auto fade-in">
-<h2 class="text-gold text-sm md:text-lg uppercase tracking-[0.4em] mb-4">Regalia Collection</h2>
-<h1 id="hero-title" class="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-tight transition-opacity duration-500">Shadow of the Bull</h1>
-<p id="hero-subtitle" class="text-gray-300 text-lg md:text-xl font-light tracking-wide max-w-2xl mb-10 transition-opacity duration-500">Lamborghini Aventador Ultimae "Ombra"</p>
-<a href="#" class="inline-flex items-center px-8 py-4 border border-gold text-gold uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300 group">
-Discover More
-<i data-lucide="chevron-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
-</a>
-</div>
-<div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-4 z-20" id="slider-dots">
-<button class="h-[2px] w-16 bg-gold transition-all duration-500"></button>
-<button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
-<button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
-</div>
+<!-- HERO SECTION -->
+<section class="h-screen relative flex items-center justify-center bg-black">
+  <div class="text-center">
+    <h1 class="text-6xl md:text-8xl font-serif font-bold text-gold mb-4">Shadow of the Bull</h1>
+    <p class="text-gray-400 mb-8 text-lg">Lamborghini Aventador Ultimae "Ombra"</p>
+    <a href="bmw.html" class="btn-gold inline-flex items-center gap-2">Discover More <i data-lucide="chevron-right"></i></a>
+  </div>
 </section>
-</div>
 
-<!-- BMW PAGE -->
-<div id="bmw" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">BMW Models</h2>
-<div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-<img src="https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-</div>
-</div>
+<!-- SEARCH SECTION -->
+<section class="py-24 px-6 bg-[#050505]">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-serif mb-4">Find Your Dream Model</h2>
+    <p class="text-gray-400 mb-8">Choose options from below and find your customization</p>
+    <div class="grid md:grid-cols-3 gap-4">
+      <select id="brand" class="bg-black border border-gray-700 text-gray-300 py-3 px-4">
+        <option value="">Brand</option>
+        <option value="bmw.html">BMW</option>
+        <option value="ferrari.html">Ferrari</option>
+        <option value="lamborghini.html">Lamborghini</option>
+      </select>
+      <select id="model" class="bg-black border border-gray-700 text-gray-300 py-3 px-4">
+        <option value="">Model</option>
+        <option>Show All</option>
+      </select>
+      <button id="searchBtn" class="bg-gold text-black py-3 px-4 uppercase font-bold">Search</button>
+    </div>
+  </div>
+</section>
 
-<!-- FERRARI PAGE -->
-<div id="ferrari" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">Ferrari Models</h2>
-<div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-<img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-</div>
-</div>
-
-<!-- LAMBORGHINI PAGE -->
-<div id="lamborghini" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">Lamborghini Models</h2>
-<div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-<img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-</div>
-</div>
-
-<!-- RIMS PAGE -->
-<div id="rims" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">Rims & Wheels</h2>
-<div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
-<img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-<img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
-</div>
-</div>
-
-<!-- NEWS PAGE -->
-<div id="news" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">News & Events</h2>
-<div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
-<div class="bg-[#111] p-4 rounded-md hover:bg-[#222] transition-all">
-<h3 class="text-white font-serif text-xl mb-2">Lamborghini 'Ombra' Unveiled</h3>
-<p class="text-gray-400 text-sm">Regalia’s latest masterpiece stuns the crowd.</p>
-</div>
-<div class="bg-[#111] p-4 rounded-md hover:bg-[#222] transition-all">
-<h3 class="text-white font-serif text-xl mb-2">Ferrari SF90 Transformation</h3>
-<p class="text-gray-400 text-sm">Ultra-luxury custom Ferrari revealed.</p>
-</div>
-<div class="bg-[#111] p-4 rounded-md hover:bg-[#222] transition-all">
-<h3 class="text-white font-serif text-xl mb-2">BMW M4 Phantom Edition</h3>
-<p class="text-gray-400 text-sm">Extreme BMW modifications showcased.</p>
-</div>
-</div>
-</div>
-
-<!-- CONTACT PAGE -->
-<div id="contact" class="page mt-24 fade-in">
-<h2 class="text-gold text-5xl font-serif text-center my-16">Contact Us</h2>
-<div class="container mx-auto max-w-2xl px-6">
-<form class="space-y-4">
-<input type="text" placeholder="Name" class="w-full p-4 bg-[#111] border border-[#222] text-white">
-<input type="email" placeholder="Email" class="w-full p-4 bg-[#111] border border-[#222] text-white">
-<textarea placeholder="Message" class="w-full p-4 bg-[#111] border border-[#222] text-white h-32"></textarea>
-<button type="submit" class="w-full py-4 bg-gold text-black uppercase font-bold hover:bg-yellow-600 transition-all">Send Message</button>
-</form>
-</div>
-</div>
+<!-- NEWS SECTION -->
+<section class="py-24 px-6">
+  <h2 class="text-4xl font-serif text-gold mb-8">News & Events</h2>
+  <div class="grid md:grid-cols-3 gap-6">
+    <div class="bg-[#111] p-4">
+      <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="mb-2">
+      <h3 class="text-white font-serif">Lamborghini 'Ombra'</h3>
+      <p class="text-gray-400 text-sm">Regalia’s latest masterpiece stuns the crowd.</p>
+    </div>
+    <div class="bg-[#111] p-4">
+      <img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="mb-2">
+      <h3 class="text-white font-serif">The Art of Forged Gold</h3>
+      <p class="text-gray-400 text-sm">Signature 24k gold-plated rims.</p>
+    </div>
+    <div class="bg-[#111] p-4">
+      <img src="https://images.unsplash.com/photo-1657779913133-45e8414370d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="mb-2">
+      <h3 class="text-white font-serif">Interior Perfection</h3>
+      <p class="text-gray-400 text-sm">Diamond-stitched alcantara patterns.</p>
+    </div>
+  </div>
+</section>
 
 <!-- FOOTER -->
-<footer class="bg-[#050505] text-white py-16 border-t border-[#111] mt-24">
-<div class="container mx-auto px-6 text-center text-gray-400 text-sm">
-© 2026 Regalia Luxury Automotive. All Rights Reserved.
-</div>
+<footer class="bg-[#050505] py-12 px-6 mt-12 border-t border-gray-900 text-gray-400">
+  <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between">
+    <p>© 2026 Regalia Luxury Automotive</p>
+    <div class="flex gap-4 mt-4 md:mt-0">
+      <a href="index.html" class="hover:text-gold">Home</a>
+      <a href="bmw.html" class="hover:text-gold">BMW</a>
+      <a href="ferrari.html" class="hover:text-gold">Ferrari</a>
+      <a href="lamborghini.html" class="hover:text-gold">Lamborghini</a>
+      <a href="news.html" class="hover:text-gold">News</a>
+      <a href="contact.html" class="hover:text-gold">Contact</a>
+    </div>
+  </div>
 </footer>
 
 <script>
 lucide.createIcons();
-const slides = document.getElementById('hero-slider').children;
-const titleEl = document.getElementById('hero-title');
-const subEl = document.getElementById('hero-subtitle');
-const dots = document.getElementById('slider-dots').children;
-const slidesData = [
-{title:'Shadow of the Bull',sub:'Lamborghini Aventador Ultimae "Ombra"'},
-{title:'Italian Venom',sub:'Ferrari SF90 "Cavallo Nero"'},
-{title:'Bavarian Ghost',sub:'BMW M4 CSL "Phantom"'}
-];
-let currentSlide = 0;
-setInterval(()=>{
-slides[currentSlide].style.opacity=0;
-dots[currentSlide].classList.remove('bg-gold');
-dots[currentSlide].classList.add('bg-gray-700');
-currentSlide=(currentSlide+1)%slides.length;
-slides[currentSlide].style.opacity=1;
-dots[currentSlide].classList.remove('bg-gray-700');
-dots[currentSlide].classList.add('bg-gold');
-titleEl.style.opacity=0;
-subEl.style.opacity=0;
-setTimeout(()=>{titleEl.textContent=slidesData[currentSlide].title;subEl.textContent=slidesData[currentSlide].sub;titleEl.style.opacity=1;subEl.style.opacity=1;},500);
-},5000);
-
-function showPage(page){
-document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-document.getElementById(page).classList.add('active');
-document.querySelectorAll('.page-btn').forEach(btn=>btn.classList.remove('nav-active'));
-document.querySelectorAll('.page-btn').forEach(btn=>{if(btn.textContent.toLowerCase()===page)btn.classList.add('nav-active')});
-}
+document.getElementById('searchBtn').addEventListener('click', function(){
+    const brand = document.getElementById('brand').value;
+    if(brand) window.location.href = brand;
+});
 </script>
-
 </body>
 </html>
