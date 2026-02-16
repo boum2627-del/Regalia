@@ -3,17 +3,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>REGALIA</title>
-
+<title>REGALIA – The Art of Automotive Transformation</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
 <style>
 
-/* ===== GLOBAL ===== */
+/* ================= GLOBAL ================= */
 *{
 margin:0;
 padding:0;
 box-sizing:border-box;
 scroll-behavior:smooth;
-font-family:Arial, Helvetica, sans-serif;
+font-family:'Poppins',sans-serif;
 }
 
 body{
@@ -22,7 +22,7 @@ color:#fff;
 overflow-x:hidden;
 }
 
-/* ===== INTRO ===== */
+/* ================= INTRO CINEMATIC ================= */
 .intro{
 position:fixed;
 width:100%;
@@ -32,53 +32,58 @@ display:flex;
 justify-content:center;
 align-items:center;
 z-index:9999;
-animation:fadeOut 3s forwards 2s;
+animation:fadeOut 4s forwards 3s;
 }
 
 .intro h1{
-color:#D4AF37;
-font-size:70px;
-letter-spacing:8px;
+font-size:90px;
+letter-spacing:15px;
+background:linear-gradient(90deg,#D4AF37,#f5e6a8,#D4AF37);
+-webkit-background-clip:text;
+color:transparent;
 animation:glow 2s infinite alternate;
 }
 
 @keyframes glow{
-from{ text-shadow:0 0 10px #D4AF37;}
-to{ text-shadow:0 0 30px #D4AF37;}
+from{ text-shadow:0 0 20px #D4AF37;}
+to{ text-shadow:0 0 60px #D4AF37;}
 }
 
 @keyframes fadeOut{
 to{opacity:0;visibility:hidden;}
 }
 
-/* ===== NAVBAR ===== */
+/* ================= NAVBAR ================= */
 header{
 position:fixed;
-width:100%;
 top:0;
+width:100%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-padding:20px 60px;
-background:rgba(0,0,0,0.9);
+padding:25px 80px;
+background:rgba(0,0,0,0.7);
+backdrop-filter:blur(15px);
 z-index:1000;
 }
 
 .logo{
-color:#D4AF37;
 font-size:28px;
-font-weight:bold;
+font-weight:700;
+color:#D4AF37;
+letter-spacing:5px;
 }
 
 nav ul{
 display:flex;
-gap:30px;
+gap:40px;
 list-style:none;
 }
 
 nav a{
 text-decoration:none;
 color:#fff;
+font-size:14px;
 transition:0.3s;
 }
 
@@ -86,29 +91,56 @@ nav a:hover{
 color:#D4AF37;
 }
 
-/* ===== HERO ===== */
+/* ================= HERO SLIDER ================= */
 .hero{
 height:100vh;
-background:url('https://images.unsplash.com/photo-1511910849309-0dffb8a64c1b') center/cover no-repeat;
+position:relative;
+overflow:hidden;
+}
+
+.slide{
+position:absolute;
+width:100%;
+height:100%;
+background-size:cover;
+background-position:center;
+opacity:0;
+transition:1.5s ease-in-out;
+}
+
+.slide.active{
+opacity:1;
+}
+
+.overlay{
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
 display:flex;
+flex-direction:column;
 align-items:center;
 justify-content:center;
 text-align:center;
 }
 
-.hero h1{
-font-size:60px;
-color:#D4AF37;
+.overlay h1{
+font-size:70px;
+background:linear-gradient(90deg,#D4AF37,#ffffff,#D4AF37);
+-webkit-background-clip:text;
+color:transparent;
+letter-spacing:6px;
 }
 
-.hero p{
-margin-top:15px;
-font-size:20px;
+.overlay p{
+margin-top:20px;
+font-size:18px;
+color:#ccc;
 }
 
-/* ===== SEARCH ===== */
+/* ================= FIND YOUR DREAM MODEL ================= */
 .search-section{
-padding:120px 20px;
+padding:100px 20px;
 text-align:center;
 background:#111;
 }
@@ -116,17 +148,15 @@ background:#111;
 .search-section h2{
 color:#D4AF37;
 margin-bottom:30px;
+font-size:30px;
 }
 
 select,button{
-padding:12px;
+padding:12px 20px;
 margin:10px;
 background:#000;
 color:#D4AF37;
 border:1px solid #D4AF37;
-}
-
-button{
 cursor:pointer;
 transition:0.3s;
 }
@@ -141,7 +171,7 @@ margin-top:20px;
 font-size:20px;
 }
 
-/* ===== MODELS ===== */
+/* ================= MODELS ================= */
 .models{
 padding:100px 40px;
 text-align:center;
@@ -149,51 +179,49 @@ text-align:center;
 
 .models h2{
 color:#D4AF37;
-margin-bottom:40px;
+margin-bottom:60px;
+font-size:40px;
 }
 
 .cards{
 display:flex;
 flex-wrap:wrap;
 justify-content:center;
-gap:30px;
+gap:40px;
+opacity:0;
+transform:translateY(50px);
+transition:1s;
+}
+
+.cards.visible{
+opacity:1;
+transform:translateY(0);
 }
 
 .card{
 background:#111;
+width:320px;
 border:1px solid #D4AF37;
-width:300px;
+overflow:hidden;
 transition:0.4s;
 }
 
 .card img{
 width:100%;
-height:200px;
+height:220px;
 object-fit:cover;
 }
 
 .card h3{
-padding:15px;
+padding:20px;
 }
 
 .card:hover{
-transform:translateY(-10px);
-box-shadow:0 0 20px #D4AF37;
+transform:translateY(-15px);
+box-shadow:0 0 40px #D4AF37;
 }
 
-/* ===== RIMS ===== */
-.rims{
-padding:100px 40px;
-background:#111;
-text-align:center;
-}
-
-.rims h2{
-color:#D4AF37;
-margin-bottom:40px;
-}
-
-/* ===== NEWS ===== */
+/* ================= NEWS ================= */
 .news{
 padding:100px 40px;
 text-align:center;
@@ -204,10 +232,32 @@ color:#D4AF37;
 margin-bottom:20px;
 }
 
-/* ===== CONTACT ===== */
+.news p{
+color:#ccc;
+}
+
+/* ================= EXCELLENCE ================= */
+.excellence{
+padding:100px 40px;
+text-align:center;
+background:#111;
+}
+
+.excellence h2{
+color:#D4AF37;
+margin-bottom:20px;
+}
+
+.excellence p{
+max-width:900px;
+margin:0 auto;
+line-height:1.8;
+color:#ccc;
+}
+
+/* ================= CONTACT ================= */
 .contact{
 padding:100px 40px;
-background:#111;
 text-align:center;
 }
 
@@ -216,23 +266,31 @@ color:#D4AF37;
 margin-bottom:20px;
 }
 
-/* ===== FOOTER ===== */
-footer{
-padding:40px;
-text-align:center;
-background:#000;
-border-top:1px solid #D4AF37;
+.contact p{
+color:#ccc;
 }
 
-/* ===== RESPONSIVE ===== */
+/* ================= FOOTER ================= */
+footer{
+padding:60px;
+text-align:center;
+border-top:1px solid #D4AF37;
+background:#000;
+}
+
+/* ================= RESPONSIVE ================= */
 @media(max-width:768px){
+
+header{
+padding:20px;
+}
 
 nav ul{
 display:none;
 }
 
-header{
-padding:20px;
+.overlay h1{
+font-size:35px;
 }
 
 .cards{
@@ -240,12 +298,7 @@ flex-direction:column;
 align-items:center;
 }
 
-.hero h1{
-font-size:35px;
 }
-
-}
-
 </style>
 </head>
 
@@ -263,25 +316,28 @@ font-size:35px;
 <ul>
 <li><a href="#">Home</a></li>
 <li><a href="#models">Models</a></li>
-<li><a href="#rims">Rims</a></li>
 <li><a href="#news">News</a></li>
+<li><a href="#excellence">Excellence</a></li>
 <li><a href="#contact">Contact</a></li>
 </ul>
 </nav>
 </header>
 
-<!-- HERO -->
+<!-- HERO SLIDER -->
 <section class="hero">
-<div>
-<h1>Le Luxe en Mouvement</h1>
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1511910849309-0dffb8a64c1b');"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1549924231-f129b911e442');"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1503376780353-7e6692767b70');"></div>
+
+<div class="overlay">
+<h1>LE LUXE EN MOUVEMENT</h1>
 <p>The Art of Automotive Transformation</p>
 </div>
 </section>
 
-<!-- SEARCH -->
+<!-- FIND YOUR DREAM MODEL -->
 <section class="search-section">
 <h2>Find Your Dream Model</h2>
-
 <select id="brand">
 <option value="">Select Brand</option>
 <option value="BMW">BMW</option>
@@ -294,76 +350,66 @@ font-size:35px;
 </select>
 
 <button onclick="searchCar()">Search</button>
-
 <div id="result"></div>
 </section>
 
 <!-- MODELS -->
 <section id="models" class="models">
 <h2>Our Transformations</h2>
-<div class="cards">
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
-<h3>BMW Regalia Widebody</h3>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1511910849309-0dffb8a64c1b">
-<h3>Ferrari Regalia Carbon Edition</h3>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70">
-<h3>Lamborghini Regalia SVR</h3>
-</div>
-
-</div>
-</section>
-
-<!-- RIMS -->
-<section id="rims" class="rims">
-<h2>Exclusive Rims Collection</h2>
-<p>Gold forged rims – Carbon edition – Performance luxury wheels</p>
+<div class="cards" id="cards"></div>
 </section>
 
 <!-- NEWS -->
 <section id="news" class="news">
 <h2>News & Events</h2>
-<p>Discover our latest transformations this month.</p>
+<p>Découvrez nos dernières transformations de ce mois. Chaque véhicule est sculpté après transformation avec widebody kits carbone, jantes forgées dorées et intérieurs cuir sur-mesure.</p>
+</section>
+
+<!-- EXCELLENCE -->
+<section id="excellence" class="excellence">
+<h2>L'Excellence par Passion</h2>
+<p>Regalia est née d'une passion inébranlable pour l'automobile d'exception. Inspirés par Mansory et Brabus, nous transformons exclusivement BMW, Ferrari et Lamborghini. Widebody kits carbone, intérieurs cuir diamant, jantes forgées dorées, suspensions sport et éclairages LED personnalisés. Chaque véhicule porte fièrement le logo Regalia illuminé, symbole d’une transformation parfaite.</p>
 </section>
 
 <!-- CONTACT -->
 <section id="contact" class="contact">
 <h2>Contact Us</h2>
-<p>Email: contact@regalia.com</p>
-<p>Phone: +212 6 00 00 00 00</p>
+<p>Email: contact@regalia.com | Phone: +212 6 00 00 00 00</p>
 </section>
 
 <footer>
-© 2026 REGALIA – The Art of Automotive Transformation
+<p>© 2026 REGALIA – The Art of Automotive Transformation</p>
 </footer>
 
 <script>
+// ===== SLIDER =====
+let slides=document.querySelectorAll(".slide");
+let index=0;
+setInterval(()=>{
+slides[index].classList.remove("active");
+index=(index+1)%slides.length;
+slides[index].classList.add("active");
+},5000);
 
-const models = {
-BMW:["M4 Widebody","M5 Carbon Edition"],
-Ferrari:["488 Regalia","F8 Widebody"],
-Lamborghini:["Huracan EVO","Aventador SVR"]
+// ===== MODEL DATA =====
+const data={
+BMW:["BMW M4 Widebody","BMW M5 Carbon Edition"],
+Ferrari:["Ferrari 488 Regalia","Ferrari F8 Nero Gold"],
+Lamborghini:["Huracan Regalia EVO","Aventador SVR Gold Edition"]
 };
 
 const brandSelect=document.getElementById("brand");
 const modelSelect=document.getElementById("model");
+const cardsContainer=document.getElementById("cards");
 
 brandSelect.addEventListener("change",function(){
-const selectedBrand=this.value;
-modelSelect.innerHTML="<option>Select Model</option>";
-
-if(models[selectedBrand]){
-models[selectedBrand].forEach(function(model){
+modelSelect.innerHTML="<option value=''>Select Model</option>";
+const selected=this.value;
+if(data[selected]){
+data[selected].forEach(m=>{
 const option=document.createElement("option");
-option.value=model;
-option.textContent=model;
+option.value=m;
+option.textContent=m;
 modelSelect.appendChild(option);
 });
 }
@@ -372,16 +418,16 @@ modelSelect.appendChild(option);
 function searchCar(){
 const brand=brandSelect.value;
 const model=modelSelect.value;
-
 if(brand && model){
-document.getElementById("result").innerHTML=
-`<h3>${brand} - ${model} | Regalia Custom Build</h3>`;
+cardsContainer.innerHTML=`<div class="card">
+<img src="https://images.unsplash.com/photo-1549924231-f129b911e442">
+<h3>${brand} - ${model} (Regalia Custom Build)</h3>
+</div>`;
+cardsContainer.classList.add("visible");
 }else{
-document.getElementById("result").innerHTML=
-"<p>Please select brand and model</p>";
+document.getElementById("result").innerHTML="<p>Please select brand and model</p>";
 }
 }
-
 </script>
 
 </body>
