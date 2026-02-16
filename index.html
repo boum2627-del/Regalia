@@ -19,8 +19,8 @@ h1,h2,h3,h4,.font-serif{font-family:'Cinzel',serif;}
 ::selection{background:#d4af37;color:black;}
 .fade-in{opacity:0;transform:translateY(20px);transition:all 1s ease-out;}
 .fade-in.visible{opacity:1;transform:translateY(0);}
-.gold-text-glow{text-shadow:0 0 10px rgba(212,175,55,0.3);}
-.hidden-page{display:none;}
+.page{display:none;}
+.page.active{display:block;}
 .nav-active{color:#d4af37;}
 </style>
 <script>
@@ -45,24 +45,34 @@ tailwind.config={theme:{extend:{colors:{gold:'#d4af37',black:'#050505',dark:'#0a
 </div>
 </nav>
 
-<!-- SECTIONS -->
-<div id="home" class="page fade-in mt-24">
+<!-- HOME PAGE -->
+<div id="home" class="page active mt-24">
 <section class="relative h-screen w-full overflow-hidden">
+<div id="hero-slider" class="absolute inset-0">
 <div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-100" style="background-image:url('https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
+<div class="absolute inset-0 bg-cover bg-center transition-opacity duration-1000 opacity-0" style="background-image:url('https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1920');"></div>
+</div>
 <div class="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent"></div>
 <div class="absolute bottom-32 left-0 right-0 z-10 px-6 container mx-auto fade-in">
 <h2 class="text-gold text-sm md:text-lg uppercase tracking-[0.4em] mb-4">Regalia Collection</h2>
-<h1 class="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-tight transition-opacity duration-500">Shadow of the Bull</h1>
-<p class="text-gray-300 text-lg md:text-xl font-light tracking-wide max-w-2xl mb-10 transition-opacity duration-500">Lamborghini Aventador Ultimae "Ombra"</p>
+<h1 id="hero-title" class="text-5xl md:text-8xl font-serif font-bold text-white mb-6 leading-tight transition-opacity duration-500">Shadow of the Bull</h1>
+<p id="hero-subtitle" class="text-gray-300 text-lg md:text-xl font-light tracking-wide max-w-2xl mb-10 transition-opacity duration-500">Lamborghini Aventador Ultimae "Ombra"</p>
 <a href="#" class="inline-flex items-center px-8 py-4 border border-gold text-gold uppercase tracking-widest hover:bg-gold hover:text-black transition-all duration-300 group">
 Discover More
 <i data-lucide="chevron-right" class="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform"></i>
 </a>
 </div>
+<div class="absolute bottom-10 left-0 right-0 flex justify-center space-x-4 z-20" id="slider-dots">
+<button class="h-[2px] w-16 bg-gold transition-all duration-500"></button>
+<button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
+<button class="h-[2px] w-16 bg-gray-700 transition-all duration-500"></button>
+</div>
 </section>
 </div>
 
-<div id="bmw" class="page hidden-page fade-in mt-24">
+<!-- BMW PAGE -->
+<div id="bmw" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">BMW Models</h2>
 <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 <img src="https://images.unsplash.com/photo-1552305360-e592ec7fc092?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
@@ -71,7 +81,8 @@ Discover More
 </div>
 </div>
 
-<div id="ferrari" class="page hidden-page fade-in mt-24">
+<!-- FERRARI PAGE -->
+<div id="ferrari" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">Ferrari Models</h2>
 <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 <img src="https://images.unsplash.com/photo-1686440706452-56b603b4af99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
@@ -80,7 +91,8 @@ Discover More
 </div>
 </div>
 
-<div id="lamborghini" class="page hidden-page fade-in mt-24">
+<!-- LAMBORGHINI PAGE -->
+<div id="lamborghini" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">Lamborghini Models</h2>
 <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 <img src="https://images.unsplash.com/photo-1759066591048-ead4c2eeac6e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
@@ -89,7 +101,8 @@ Discover More
 </div>
 </div>
 
-<div id="rims" class="page hidden-page fade-in mt-24">
+<!-- RIMS PAGE -->
+<div id="rims" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">Rims & Wheels</h2>
 <div class="container mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 px-6">
 <img src="https://images.unsplash.com/photo-1760510509489-5b6b2f83e7b5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&w=1080" class="w-full hover:scale-105 transition-transform">
@@ -99,7 +112,8 @@ Discover More
 </div>
 </div>
 
-<div id="news" class="page hidden-page fade-in mt-24">
+<!-- NEWS PAGE -->
+<div id="news" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">News & Events</h2>
 <div class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
 <div class="bg-[#111] p-4 rounded-md hover:bg-[#222] transition-all">
@@ -117,7 +131,8 @@ Discover More
 </div>
 </div>
 
-<div id="contact" class="page hidden-page fade-in mt-24">
+<!-- CONTACT PAGE -->
+<div id="contact" class="page mt-24 fade-in">
 <h2 class="text-gold text-5xl font-serif text-center my-16">Contact Us</h2>
 <div class="container mx-auto max-w-2xl px-6">
 <form class="space-y-4">
@@ -138,12 +153,34 @@ Discover More
 
 <script>
 lucide.createIcons();
+const slides = document.getElementById('hero-slider').children;
+const titleEl = document.getElementById('hero-title');
+const subEl = document.getElementById('hero-subtitle');
+const dots = document.getElementById('slider-dots').children;
+const slidesData = [
+{title:'Shadow of the Bull',sub:'Lamborghini Aventador Ultimae "Ombra"'},
+{title:'Italian Venom',sub:'Ferrari SF90 "Cavallo Nero"'},
+{title:'Bavarian Ghost',sub:'BMW M4 CSL "Phantom"'}
+];
+let currentSlide = 0;
+setInterval(()=>{
+slides[currentSlide].style.opacity=0;
+dots[currentSlide].classList.remove('bg-gold');
+dots[currentSlide].classList.add('bg-gray-700');
+currentSlide=(currentSlide+1)%slides.length;
+slides[currentSlide].style.opacity=1;
+dots[currentSlide].classList.remove('bg-gray-700');
+dots[currentSlide].classList.add('bg-gold');
+titleEl.style.opacity=0;
+subEl.style.opacity=0;
+setTimeout(()=>{titleEl.textContent=slidesData[currentSlide].title;subEl.textContent=slidesData[currentSlide].sub;titleEl.style.opacity=1;subEl.style.opacity=1;},500);
+},5000);
+
 function showPage(page){
-document.querySelectorAll('.page').forEach(p=>p.classList.add('hidden-page'));
-document.getElementById(page).classList.remove('hidden-page');
-// Navbar active state
+document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+document.getElementById(page).classList.add('active');
 document.querySelectorAll('.page-btn').forEach(btn=>btn.classList.remove('nav-active'));
-document.querySelectorAll('.page-btn').forEach(btn=>{if(btn.textContent.toLowerCase()===page) btn.classList.add('nav-active')});
+document.querySelectorAll('.page-btn').forEach(btn=>{if(btn.textContent.toLowerCase()===page)btn.classList.add('nav-active')});
 }
 </script>
 
